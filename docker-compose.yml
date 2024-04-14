@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - 5010:5010
+    volumes:
+      - ./backend/package.json:/app/package.json:rw
+      - ./backend/.env:/app/.env:rw
+      - ./backend/src/:/app/src/:rw
+    environment:
+      - WATCHPACK_POLLING=true
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: checkpoint2_db
+      POSTGRES_USER: checkpoint2
+      POSTGRES_PASSWORD: checkpoint2
+      PGDATA: customDataFolder
+    volumes:
+      - ./dbData/:/var/lib/postgresql/data/customDataFolder
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d checkpoint2_db -U checkpoint2"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
