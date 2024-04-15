@@ -1,5 +1,9 @@
 import { Country } from "../entities/country.entity";
 
+export const findAll = (): Promise<Country[]> => {
+  return Country.find();
+};
+
 export const createCountry = async (
   code: string,
   name: string,

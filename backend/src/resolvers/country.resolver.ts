@@ -4,6 +4,11 @@ import * as CountryService from "../services/country.service";
 
 @Resolver(Country)
 export class countryResolver {
+  @Query(() => [Country])
+  async getCountries(): Promise<Country[]> {
+    return CountryService.findAll();
+  }
+
   @Mutation(() => Country)
   async addCountry(
     @Arg("code") code: string,
