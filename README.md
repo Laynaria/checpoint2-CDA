@@ -1,4 +1,6 @@
-# This repository is for my own CHECKPOINT 2, during my CDA apprenticeship
+# This repository is for my CHECKPOINT 2, during my CDA apprenticeship
+
+## Technology Knowledge Test in this Checkpoint : Apollo GraphQL + PostgreSQL + typeORM + typeGraphQL
 
 Step 1 :
 
