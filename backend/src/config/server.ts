@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import { ApolloServer } from "apollo-server";
-import { UserResolver } from "../resolvers/user.resolver";
+import { countryResolver } from "../resolvers/country.resolver";
 import { dataSource } from "./db";
 import { buildSchema } from "type-graphql";
 
@@ -9,7 +9,7 @@ const createServer = async (): Promise<ApolloServer> => {
   await dataSource.initialize();
 
   const schema = await buildSchema({
-    resolvers: [UserResolver],
+    resolvers: [countryResolver],
     validate: { forbidUnknownValues: false },
   });
 

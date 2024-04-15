@@ -3,20 +3,20 @@ import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
 @Entity()
-export class User extends BaseEntity {
+export class Country extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
   id: number;
 
   @Field()
   @Column({ unique: true })
-  username: string;
+  code: string;
 
   @Field()
   @Column({ unique: true })
-  email: string;
+  name: string;
 
   @Field()
   @Column()
-  password: string;
+  emoji: string;
 }
