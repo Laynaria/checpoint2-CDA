@@ -4,6 +4,10 @@ export const findAll = (): Promise<Country[]> => {
   return Country.find();
 };
 
+export const findByCode = (code: string): Promise<Country> => {
+  return Country.findOneByOrFail({ code });
+};
+
 export const createCountry = async (
   code: string,
   name: string,
