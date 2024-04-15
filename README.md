@@ -2,7 +2,7 @@
 
 ## Technology Knowledge Test in this Checkpoint : Apollo GraphQL + PostgreSQL + typeORM + typeGraphQL
 
-Step 1 :
+### Setting the project:
 
 - Create `.env file` in backend repository by copy pasting `.env.sample`
 
@@ -17,3 +17,21 @@ DATABASE = checkpoint2_db;
 ```
 
 - use `docker-compose up` to launch the repository if it doesn't work, launch `docker compose up --build`
+
+### Results Screenshots:
+
+Mutation:
+
+![Mutation](./pictures/mutationCountry.png)
+
+Query All Countries :
+
+![QueryAllCountries](./pictures/queryAllCountries.png)
+
+Query Country By Code :
+
+![QueryCountryByCode](./pictures/queryCountryByCode.png)
+
+Query Countries By Continent Code:
+
+![QueryCountriesByContinentCode](./pictures/queryCountriesByContinentCode.png)
