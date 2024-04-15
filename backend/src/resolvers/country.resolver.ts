@@ -15,6 +15,18 @@ export class countryResolver {
 
   /**
    *
+   * @param continentCode string of country continent code used to find countries by continent code
+   * @returns calls a function in CountryService which returns an array of country which have the continent code form Arg
+   */
+  @Query(() => [Country])
+  async getCountriesByContinentCode(
+    @Arg("continentCode") continentCode: string
+  ): Promise<Country[]> {
+    return CountryService.findByCountryCode(continentCode);
+  }
+
+  /**
+   *
    * @param code string of country code used to find country by code
    * @returns calls a function in CountryService which returns a country or an error message if fail
    */
@@ -34,8 +46,9 @@ export class countryResolver {
   async addCountry(
     @Arg("code") code: string,
     @Arg("name") name: string,
-    @Arg("emoji") emoji: string
+    @Arg("emoji") emoji: string,
+    @Arg("continentCode") continentCode: string
   ): Promise<Country> {
-    return CountryService.createCountry(code, name, emoji);
+    return CountryService.createCountry(code, name, emoji, continentCode);
   }
 }
