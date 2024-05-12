@@ -12,7 +12,23 @@ services:
     environment:
       - WATCHPACK_POLLING=true
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    command: npm run dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/src/:/app/src/:rw
+      - ./frontend/public/:/app/public/:rw
+      - ./frontend/.env.local:/app/.env.local:rw
+      - ./frontend/package.json:/app/package.json:rw
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
 
   db:
     image: postgres
@@ -21,7 +37,7 @@ services:
       POSTGRES_DB: checkpoint2_db
       POSTGRES_USER: checkpoint2
       POSTGRES_PASSWORD: checkpoint2
-      PGDATA: customDataFolder
+      PGDATA: /var/lib/postgresql/data/customDataFolder
     volumes:
       - ./dbData/:/var/lib/postgresql/data/customDataFolder
     ports:

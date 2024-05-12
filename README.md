@@ -16,6 +16,14 @@ PASSWORD = checkpoint2;
 DATABASE = checkpoint2_db;
 ```
 
+- Create `.env.local file` in frontent repository by copy pasting `.env.sample`
+
+since this is a training repo, here are the right informations to match the docker-compose infos:
+
+```
+NEXT_PUBLIC_API_LINK=http://localhost:5010/graphql
+```
+
 - use `docker-compose up` to launch the repository if it doesn't work, launch `docker compose up --build`
 
 ### Results Screenshots:
